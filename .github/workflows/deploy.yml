@@ -30,13 +30,13 @@ jobs:
           ref: master
           path: oli-scratch/oli-scratch
 
-      - name: Run `npm ci` in scratch-lego-bluetooth-extensions
+      - name: Run `npm ci` in oli-scratch
         run: npm ci
-        working-directory: oli-scratch/scratch-lego-bluetooth-extensions
+        working-directory: oli-scratch
 
       - name: Register all extensions
         run: npm run register
-        working-directory: oli-scratch/scratch-lego-bluetooth-extensions
+        working-directory: oli-scratch
 
       - name: Build scratch-gui
         run: npm run build
@@ -44,10 +44,10 @@ jobs:
 
       - name: Build all mjs files
         run: npm run build
-        working-directory: oli-scratch/scratch-lego-bluetooth-extensions
+        working-directory: oli-scratch
 
       - name: Copy all mjs files
-        run: cp -r oli-scratch/scratch-lego-bluetooth-extensions/dist oli-scratch/scratch-gui/build/xcratch
+        run: cp -r oli-scratch/dist oli-scratch/scratch-gui/build/xcratch
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
