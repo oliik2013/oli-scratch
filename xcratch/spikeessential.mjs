@@ -5062,7 +5062,7 @@ var IntlRelativeFormat = intlRelativeformat.exports;
 
 var propTypes = {exports: {}};
 
-var reactIs = {exports: {}};
+var reactIs$1 = {exports: {}};
 
 var reactIs_production_min = {};
 
@@ -5333,12 +5333,12 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 if (process.env.NODE_ENV === 'production') {
-  reactIs.exports = reactIs_production_min;
+  reactIs$1.exports = reactIs_production_min;
 } else {
-  reactIs.exports = reactIs_development;
+  reactIs$1.exports = reactIs_development;
 }
 
-var ReactIs$2 = reactIs.exports;
+var ReactIs$1 = reactIs$1.exports;
 var assign = objectAssign;
 var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
 var has = has$2;
@@ -5588,7 +5588,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
   function createElementTypeTypeChecker() {
     function validate(props, propName, componentName, location, propFullName) {
       var propValue = props[propName];
-      if (!ReactIs$2.isValidElementType(propValue)) {
+      if (!ReactIs$1.isValidElementType(propValue)) {
         var propType = getPropType(propValue);
         return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement type.'));
       }
@@ -5932,12 +5932,12 @@ var factoryWithThrowingShims = function factoryWithThrowingShims() {
 };
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactIs$1 = reactIs.exports;
+  var ReactIs = reactIs$1.exports;
 
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  propTypes.exports = factoryWithTypeCheckers(ReactIs$1.isElement, throwOnDirectAccess);
+  propTypes.exports = factoryWithTypeCheckers(ReactIs.isElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
@@ -5945,11 +5945,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 var PropTypes = propTypes.exports;
 
-/**
- * Copyright 2015, Yahoo! Inc.
- * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
- */
-var ReactIs = reactIs.exports;
+var reactIs = reactIs$1.exports;
 var FORWARD_REF_STATICS = {
   '$$typeof': true,
   render: true,
@@ -5957,8 +5953,17 @@ var FORWARD_REF_STATICS = {
   displayName: true,
   propTypes: true
 };
+var MEMO_STATICS = {
+  '$$typeof': true,
+  compare: true,
+  defaultProps: true,
+  displayName: true,
+  propTypes: true,
+  type: true
+};
 var TYPE_STATICS = {};
-TYPE_STATICS[ReactIs.ForwardRef] = FORWARD_REF_STATICS;
+TYPE_STATICS[reactIs.ForwardRef] = FORWARD_REF_STATICS;
+TYPE_STATICS[reactIs.Memo] = MEMO_STATICS;
 
 /**
  * Use invariant() to assert state which your program assumes to be true.
@@ -9196,7 +9201,7 @@ var JSONRPC$1 = /*#__PURE__*/function () {
       if (json.jsonrpc !== '2.0') {
         throw new Error("Bad or missing JSON-RPC version in message: ".concat(json));
       }
-      if (json.hasOwnProperty('method')) {
+      if (Object.prototype.hasOwnProperty.call(json, 'method')) {
         this._handleRequest(json);
       } else {
         this._handleResponse(json);
