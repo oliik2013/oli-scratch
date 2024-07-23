@@ -18,7 +18,7 @@ jobs:
 
       - name: Run `npm ci` in scratch-gui
         run: npm ci
-        working-directory: ./scratch-gui
+        working-directory: scratch-gui
 
       - name: Checkout oliik2013/oli-scratch
         uses: actions/checkout@v2
