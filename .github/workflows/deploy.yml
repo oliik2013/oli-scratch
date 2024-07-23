@@ -16,13 +16,6 @@ jobs:
         with:
           node-version: 20
 
-      - name: Checkout oliik2013/oli-scratch
-        uses: actions/checkout@v2
-        with:
-          repository: oliik2013/oli-scratch
-          ref: lego-bluetooth-extensions
-          path: ./scratch-gui
-
       - name: Run `npm ci` in scratch-gui
         run: npm ci
         working-directory: ./scratch-gui
