@@ -30,7 +30,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bricklife/scratch-lego-bluetooth-extensions.git"
+    "url": "git+https://github.com/oliik2013/oli-scratch.git"
   },
   "keywords": [
     "scratch",
@@ -41,9 +41,9 @@
   "author": "Shinichiro Oba",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bricklife/scratch-lego-bluetooth-extensions/issues"
+    "url": "https://github.com/oliik2013/oli-scratch/issues"
   },
-  "homepage": "https://github.com/bricklife/scratch-lego-bluetooth-extensions",
+  "homepage": "https://github.com/oliik2013/oli-scratch",
   "devDependencies": {
     "xcratch-build": "github:bricklife/xcratch-build#lego-bluetooth-extensions"
   }
