@@ -16,37 +16,41 @@ jobs:
         with:
           node-version: 20
 
+      - name: Clone the Repo
+        run: git clone https://github.com/oliik2013/oli-scratch.git
+
       - name: Run `npm ci` in scratch-gui
-        run: cd .. && cd scratch-gui && npm ci
+        run: npm ci
+        working-directory: oli-scratch/scratch-gui
 
       - name: Checkout oliik2013/oli-scratch
         uses: actions/checkout@v2
         with:
           repository: oliik2013/oli-scratch
           ref: master
-          path: ./oli-scratch
+          path: oli-scratch/oli-scratch
 
       - name: Run `npm ci` in scratch-lego-bluetooth-extensions
         run: npm ci
-        working-directory: ./scratch-lego-bluetooth-extensions
+        working-directory: oli-scratch/scratch-lego-bluetooth-extensions
 
       - name: Register all extensions
         run: npm run register
-        working-directory: ./scratch-lego-bluetooth-extensions
+        working-directory: oli-scratch/scratch-lego-bluetooth-extensions
 
       - name: Build scratch-gui
         run: npm run build
-        working-directory: ./scratch-gui
+        working-directory: oli-scratch/scratch-gui
 
       - name: Build all mjs files
         run: npm run build
-        working-directory: ./scratch-lego-bluetooth-extensions
+        working-directory: oli-scratch/scratch-lego-bluetooth-extensions
 
       - name: Copy all mjs files
-        run: cp -r ./scratch-lego-bluetooth-extensions/dist ./scratch-gui/build/xcratch
+        run: cp -r oli-scratch/scratch-lego-bluetooth-extensions/dist oli-scratch/scratch-gui/build/xcratch
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./scratch-gui/build
+          publish_dir: oli-scratch/scratch-gui/build
