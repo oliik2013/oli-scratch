@@ -1,6 +1,6 @@
 {
   "name": "scratch-lego-bluetooth-extensions",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Scratch 3.0 extensions for LEGO Bluetooth and BLE devices",
   "scripts": {
     "register": "npm run register:legoble && npm run register:spikeessential && npm run register:legoremote && npm run register:controlplus && npm run register:poweredup && npm run register:duplotrain && npm run register:legopeach && npm run register:legoluigi && npm run register:legomario && npm run register:qrcode",
